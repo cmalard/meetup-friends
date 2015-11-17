@@ -3,10 +3,12 @@
 // @namespace      valdun.net
 // @description    Manage a friend list on meetup.com
 // @include        http://www.meetup.com/*/events/*
-// @version        1
+// @version        1.1
 // @grant          none
 // @require        http://code.jquery.com/jquery-latest.min.js
 // ==/UserScript==
+
+this.$ = this.jQuery = jQuery.noConflict(true);
 
 var friends = [
   123456789, // ID of a friend
