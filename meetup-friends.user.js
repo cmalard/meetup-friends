@@ -24,17 +24,26 @@ $('#rsvp-list-waitlist li').each(function (i, elt) {
 $('.event-attendees h3').after('<h4>' + $('#rsvp-list-waitlist li').length + ' waiting</h4>');
 
 // Highlight friends
-var $my_profile = $('#rsvp-list').children().first(),
-    friends_list = {},
-    colors = {
-      no: 'red',
-      waitlist: 'grey',
-      list: 'green'
-    };
+var friends_list = {};
+var colors = {
+  list: '#0fd9a3',
+  waitlist: '#353e48',
+  no: '#ed1c40',
+};
+
+var $first_attendee = $('#rsvp-list').children().first();
+if (!$first_attendee.hasClass('memberinfo-widget')) {
+  $first_attendee = $first_attendee.next();
+}
 
 function createLists() {
   for (var status in colors) {
-    friends_list['$' + status] = $('<div/>').css({'box-shadow': '0 0 0 10px ' + colors[status], 'margin-bottom': '20px'}).insertAfter($my_profile);
+    friends_list['$' + status] = $('<div/>')
+      .css({
+        'box-shadow': '0 0 0 10px ' + colors[status],
+        'margin-bottom': '20px'
+      })
+      .insertBefore($first_attendee);
   }
 }
 
@@ -52,8 +61,8 @@ function updateFriendsList() {
     var friend_status = $friend.parent().attr('id').replace(/.*-/, '');
     $friend.clone().appendTo(friends_list['$' + friend_status]);
     $friend.css({
-      'background-color': '#E0393E',
-      'box-shadow': '0 0 0 10px #E0393E'
+      'background-color': colors.list,
+      'box-shadow': '10px 0 0 0 ' + colors.list + ', -10px 0 0 0 ' + colors.list
     });
   });
 
