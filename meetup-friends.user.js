@@ -3,6 +3,7 @@
 // @namespace      valdun.net
 // @description    Manage a friend list on meetup.com
 // @include        http://www.meetup.com/*/events/*
+// @include        https://www.meetup.com/*/events/*
 // @version        1.1
 // @grant          none
 // @require        http://code.jquery.com/jquery-latest.min.js
@@ -11,8 +12,7 @@
 this.$ = this.jQuery = jQuery.noConflict(true);
 
 var friends = [
-  123456789, // ID of a friend
-  123456789, // ID of a second friend, and so on...
+  // 123456789, // ID of a friend
 ];
 
 // Display position in wait list
